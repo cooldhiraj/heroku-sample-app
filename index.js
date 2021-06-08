@@ -1,19 +1,27 @@
+
 // This line must come before importing any instrumented module.
 const tracer = require('dd-trace').init({
     logInjection: true
 });
 var dd_options = {
-  'response_code':true,
-  'tags': ['app:heroku-express']
- }
-var connect_datadog = require('connect-datadog')(dd_options);
+    'response_code':true,
+    'tags': ['app:heroku_express']
+   }
+
 const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
-express()
-    .use(express.static(path.join(__dirname, 'public')))
-    .use(connect_datadog)
-    .set('views', path.join(__dirname, 'views'))
-    .set('view engine', 'ejs')
-    .get('/', (req, res) => res.render('pages/index'))
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+const app = express()
+var connect_datadog = require('connect-datadog')(dd_options);
+const port = process.env.PORT || 5000;
+app.use(connect_datadog);
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/about', (req, res) => {
+    res.send('About page')
+  })
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
