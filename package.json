@@ -12,7 +12,7 @@
     },
     "dependencies": {
         "dd-trace": "^0.34.0",
-        "connect-datadog":"^0.0.9",
+        "connect-datadog": "^0.0.9",
         "ejs": "^3.1.5",
         "express": "^4.15.2"
     },
