@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 app.use(connect_datadog);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World new!')
 })
 
 app.get('/about', (req, res) => {
