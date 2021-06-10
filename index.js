@@ -11,7 +11,7 @@ var dd_options = {
 const express = require('express')
 const app = express()
 var connect_datadog = require('connect-datadog')(dd_options);
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 app.use(connect_datadog);
 
 app.get('/', (req, res) => {
